@@ -1,0 +1,66 @@
+﻿<!DOCTYPE >
+<html lang="en">
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="player-audio"> <audio id="audio" autoplay="" src=""></audio></div>
+    <div style="display:block;text-align:center;margin-left:auto; margin-right:auto;width:100px;height:100px;" id="player"> </div>
+    <script src="./flowplayer/flowplayer-3.2.13.min.js"> </script>
+    <script language="JavaScript">
+         var index = getURLParameter("index");
+        var swfurl = "./flowplayer/flowplayer-3.2.18.swf";
+        var viode_w=0, video_h=0;
+        var that;
+        // var src =window.parent.srcurl;
+        var src ="http://"+window.location.hostname+":1337/live.mp3?index="+index
+        var myplayer = $f("player", swfurl, {
+            clip: {
+                url: src,
+                autoPlay: true,
+                autoBuffering: true,
+
+                onMetaDataChange: function () {
+
+                },
+                onMetaData: function () {
+
+                }
+            },
+            plugins: {
+                controls: null
+            },
+            onLoad: function () {
+                 document.getElementById("player-audio").innerHTML="<div></div>";
+                 this.setVolume(100); 
+              
+            }
+        });
+            
+           
+        setSrc(src);
+        function setSrc(src) {
+            var audio=document.getElementById("audio");
+            audio.volume=1;
+            audio.src=src;
+
+        }
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
+        }
+        // function changevol(dd){
+        //     if (myplayer.getState()>0) {
+        //         myplayer.setVolume(dd); 
+        //     }
+        //     else{
+        //         document.getElementById("audio").volume = dd/100;
+        //     }
+        // }
+    </script>
+</body>
+</html>

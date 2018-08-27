@@ -1,0 +1,39 @@
+//'use strict';
+
+import React from 'react'
+import LoginFooter from './footer'
+import LoginForm from './form'
+
+import './index.css'
+
+export default class pageLogin extends React.Component {
+  constructor ( props ) {
+    super( props );
+    this.state = {
+      loading:true
+    };
+  }
+
+   render() {
+    return (
+      <div data-reactroot="" className="login-view___20k2g">
+        <div className="left-bg___DP2nG">
+          <div className="left-bg-title___fLDIv">
+            <div className="left-logo__lt">
+            </div>
+          </div>
+        </div>
+        <div className="right-panel___SmvwX">
+          <div className="login-form___1rW3i">
+            <div className="login-form-title___11oiF">
+              {process.env.REACT_APP_WEBSITE_NAME}
+              <span className="login-form-version___1SiTs">Ver 1.0.0</span>
+            </div>
+            <LoginForm />
+          </div>
+          <LoginFooter />
+        </div>
+      </div>
+    )
+  }
+}
